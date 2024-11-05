@@ -1,6 +1,13 @@
 [global]
 frame_color = "#8aadf4"
 separator_color= frame
+padding = 10
+horizontal_padding = 10
+font = Monospace Bold 10
+corner_radius = 5
+
+icon_position = left
+max_icon_size = 64
 
 [urgency_low]
 background = "#24273a"
