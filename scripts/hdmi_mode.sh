@@ -7,7 +7,9 @@ hyprctl reload
 
 sleep 2
 
-env WLR_OUTPUT=HDMI-A-1 steam -bigpicture
+steam --enable-gpu --enable-features=VaapiVideoDecoder --disable-gpu-sandbox
+
+#env WLR_OUTPUT=HDMI-A-1 steam -bigpicture -force_hardware_vsyn --enable-features=VaapiVideoDecoderc
 
 cp ~/dotfiles/.config/hypr/configs/monitors_default.conf ~/dotfiles/.config/hypr/configs/monitors_current.conf
 hyprctl reload

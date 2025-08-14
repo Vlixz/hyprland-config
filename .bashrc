@@ -1,4 +1,4 @@
-﻿#
+#
 # ~/.bashrc
 #
 
@@ -15,13 +15,20 @@ if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
-# exports
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
-export GTK_THEME=Arc-Dark
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+# export GTK_THEME=Arc-Dark
+# export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 eval "$(oh-my-posh init bash --config '~/dotfiles/.config/oh-my-posh/amro.omp.json')"
+
+# tmux config
+if command -v tmux &>/dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  tmux has-session -t vlixz-dev 2>/dev/null
+  if [ $? != 0 ]; then
+    exec ~/dotfiles/.config/tmux/vlixz-dev.sh
+  else
+    tmux attach -t vlixz-dev
+  fi
+fi
 
 # alacritty config
 source /home/vlixz/Downloads/alacritty/extra/completions/alacritty.bash
